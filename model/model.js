@@ -1,19 +1,28 @@
 const mongoose= require("mongoose");
 
-const toDoSchema= new mongoose.Schema({
-    title:{
+const userSchema= mongoose.Schema({
+    name:{
         type:String,
         required:true
     },
-    description:{
+    email:{
         type:String,
-        required:true 
+        required:true,
+        unique:true
     },
-
-},{
-    timestamps:true
+    password:{
+        type:String,
+        min:[7,'Password cannot be less than 7 characters'],
+        max:[15,'Password cannot be more than 15 characters'],
+        required:true
+    },
+    role:{
+        type:String,
+        enum:['user','staff','manager','admin'],
+        default:'user'
+    }
 })
 
-const ToDo= mongoose.model('ToDo',toDoSchema)
+const user= mongoose.model('user',userSchema)
 
-module.exports=ToDo
+module.exports=user

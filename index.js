@@ -12,7 +12,7 @@ const PORT= process.env.PORT || 4343
 const app = express()
 
 app.use(express.json())
-app.use("/api/v1/todos",router)
+app.use("/api/v1/",router)
 
 app.use("/*",(req,res,next)=>{
     res.status(404).json({
