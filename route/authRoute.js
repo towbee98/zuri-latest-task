@@ -4,5 +4,6 @@ router.route("/signup").post(signup)
 router.route("/login").post(login)
 router.route("/forgetpassword").post(forgetPassword);
 router.route("/password/:resetToken").post(resetPassword)
+router.route("/logout").get(logout)
 
 module.exports= router;
